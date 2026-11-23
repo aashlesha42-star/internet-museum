@@ -357,3 +357,109 @@ if (yearSlider) {
     updateTimeMachine();
 
 }
+
+// ==========================================
+// VELTRIX-Ω7 | LOST INTERNET GALLERY ENGINE
+// ==========================================
+
+const galleryExhibits = {
+
+    search: {
+        title: "RETRO SEARCH ENGINE",
+        category: "EXHIBIT / EARLY WEB SEARCH",
+        year: "ERA: 1990s–2000s",
+        number: "GALLERY_001",
+        description: "A recreation inspired by early internet search pages.",
+        fact: "Early search engines helped people discover websites across the growing World Wide Web. Search pages were often simple, with text links and basic search boxes."
+    },
+
+    homepage: {
+        title: "PERSONAL HOMEPAGE",
+        category: "EXHIBIT / PERSONAL WEB",
+        year: "ERA: 1990s–2000s",
+        number: "GALLERY_002",
+        description: "A recreation of a personal website from the early web.",
+        fact: "Personal homepages allowed people to share interests, hobbies, photographs and personal information. Visitors sometimes encountered guestbooks and visitor counters."
+    },
+
+    chat: {
+        title: "OLD-SCHOOL CHAT ROOM",
+        category: "EXHIBIT / ONLINE COMMUNICATION",
+        year: "ERA: 1990s–2000s",
+        number: "GALLERY_003",
+        description: "A recreation inspired by early online chat rooms.",
+        fact: "Chat rooms gave internet users places to communicate with other people in real time, often around shared interests."
+    },
+
+    browser: {
+        title: "VINTAGE BROWSER",
+        category: "EXHIBIT / WEB TECHNOLOGY",
+        year: "ERA: 1990s–2000s",
+        number: "GALLERY_004",
+        description: "A visual recreation of an early internet browser window.",
+        fact: "Web browsers made it possible to navigate websites, follow links and explore information across the World Wide Web."
+    },
+
+    pixel: {
+        title: "PIXEL ART CORNER",
+        category: "EXHIBIT / DIGITAL ART",
+        year: "ERA: 1980s–2000s",
+        number: "GALLERY_005",
+        description: "A small celebration of pixel-based digital artwork.",
+        fact: "Pixel art uses individual pixels to create images. It became especially recognizable in early computer graphics and video games."
+    },
+
+    gaming: {
+        title: "RETRO GAMING PORTAL",
+        category: "EXHIBIT / ONLINE GAMING",
+        year: "ERA: 1990s–2000s",
+        number: "GALLERY_006",
+        description: "A recreation inspired by early browser gaming portals.",
+        fact: "Browser-based games made simple interactive entertainment accessible through websites, helping create a new kind of online gaming culture."
+    }
+
+};
+
+
+// OPEN GALLERY EXHIBITS
+
+document.querySelectorAll(".gallery-open").forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        const exhibitID = this.dataset.gallery;
+
+        const exhibit = galleryExhibits[exhibitID];
+
+        if (!exhibit) return;
+
+        modalTitle.textContent = exhibit.title;
+
+        modalCategory.textContent = exhibit.category;
+
+        modalYear.textContent = exhibit.year;
+
+        modalDescription.textContent = exhibit.description;
+
+        modalFact.textContent = exhibit.fact;
+
+        modalImage.innerHTML = "";
+
+        const exhibitNumber = document.createElement("span");
+
+        exhibitNumber.textContent = exhibit.number;
+
+        modalImage.appendChild(exhibitNumber);
+
+        archiveModal.classList.add("show");
+
+    });
+
+});
+
+
+// GALLERY SYSTEM STATUS
+
+console.log("LOST INTERNET GALLERY ACTIVATED");
+
+console.log("6 DIGITAL EXHIBITS LOADED");
