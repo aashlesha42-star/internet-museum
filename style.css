@@ -1176,3 +1176,138 @@ footer p {
     }
 
 }
+
+/* =====================================
+   VELTRIX-Ω7 | TIME MACHINE
+===================================== */
+
+.time-machine {
+    padding: 100px 8%;
+    position: relative;
+}
+
+.time-machine .section-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 55px;
+}
+
+.time-machine .section-heading h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(25px, 4vw, 42px);
+    margin: 18px 0;
+}
+
+.time-machine .section-heading > p:last-child {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.time-machine-console {
+    max-width: 850px;
+    margin: auto;
+    padding: 40px;
+    background: linear-gradient(
+        145deg,
+        rgba(168, 85, 247, 0.09),
+        rgba(0, 229, 255, 0.04)
+    );
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    box-shadow: 0 0 45px rgba(0, 229, 255, 0.06);
+}
+
+.time-display {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.time-display span {
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.time-display h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(55px, 10vw, 90px);
+    color: var(--cyan);
+    text-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
+    margin: 15px 0;
+}
+
+.time-display p {
+    color: var(--purple);
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+#yearSlider {
+    width: 100%;
+    margin: 20px 0;
+    accent-color: var(--cyan);
+    cursor: pointer;
+}
+
+.year-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.time-discovery {
+    margin-top: 45px;
+    padding: 28px;
+    background: rgba(0, 0, 0, 0.25);
+    border-left: 3px solid var(--purple);
+}
+
+.time-discovery h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    margin: 15px 0;
+    color: var(--cyan);
+}
+
+.time-discovery > p:not(.section-label) {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.time-status {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+
+    .time-machine {
+        padding: 65px 5%;
+    }
+
+    .time-machine-console {
+        padding: 25px 18px;
+    }
+
+    .year-labels {
+        font-size: 9px;
+    }
+
+    .time-discovery {
+        padding: 20px;
+    }
+
+    .time-status {
+        font-size: 9px;
+    }
+
+}
