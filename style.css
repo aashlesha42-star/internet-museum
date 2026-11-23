@@ -1072,3 +1072,107 @@ footer p {
     }
 
 }
+
+/* =====================================
+   VELTRIX-Ω7
+   HISTORICAL EXHIBITION DESIGN
+===================================== */
+
+.archive-exhibition {
+    max-width: 650px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.exhibition-image {
+    height: 190px;
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center,
+        rgba(168,85,247,0.4),
+        transparent 65%),
+        linear-gradient(135deg, #10152d, #24103b);
+
+    border: 1px solid rgba(0,229,255,0.4);
+}
+
+.exhibition-image span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    color: var(--cyan);
+    text-shadow: 0 0 25px var(--cyan);
+    letter-spacing: 5px;
+}
+
+.exhibition-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.exhibition-meta span {
+    padding: 9px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--cyan);
+    background: rgba(0,229,255,0.06);
+    border: 1px solid rgba(0,229,255,0.2);
+}
+
+.exhibition-facts {
+    margin: 25px 0;
+    padding: 22px;
+    background: rgba(168,85,247,0.07);
+    border-left: 3px solid var(--purple);
+}
+
+.exhibition-facts h3 {
+    color: var(--purple);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.exhibition-facts p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.exhibition-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 25px 0;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 500px) {
+
+    .archive-exhibition {
+        padding: 35px 20px;
+    }
+
+    .exhibition-image {
+        height: 145px;
+    }
+
+    .exhibition-image span {
+        font-size: 19px;
+    }
+
+    .exhibition-footer {
+        font-size: 8px;
+    }
+
+}
