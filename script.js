@@ -256,3 +256,104 @@ console.log("VELTRIX-Ω7 SYSTEM ONLINE");
 console.log("DIGITAL EXHIBITION DATABASE LOADED");
 
 console.log("ALL ARCHIVES READY");
+
+// ==========================================
+// VELTRIX-Ω7 | TIME MACHINE ENGINE
+// ==========================================
+
+const yearSlider = document.getElementById("yearSlider");
+
+const selectedYear = document.getElementById("selectedYear");
+
+const selectedEra = document.getElementById("selectedEra");
+
+const timeTitle = document.getElementById("timeTitle");
+
+const timeDescription = document.getElementById("timeDescription");
+
+const timeCoordinates = document.getElementById("timeCoordinates");
+
+
+// HISTORICAL DATABASE
+
+const timeArchives = {
+
+    1990: {
+        era: "THE EARLY INTERNET",
+        title: "THE BEGINNING OF A NEW WORLD",
+        description: "The internet was developing beyond research networks. The World Wide Web was proposed in 1989, setting the stage for a new way to access information."
+    },
+
+    1995: {
+        era: "THE WEB REVOLUTION",
+        title: "WEBSITES ENTER EVERYDAY LIFE",
+        description: "More people began exploring the World Wide Web. Personal websites, early search engines and online communities started gaining attention."
+    },
+
+    2000: {
+        era: "THE EARLY DIGITAL AGE",
+        title: "THE DOT-COM ERA",
+        description: "The internet was becoming a major part of everyday life. Websites, online services and digital businesses were expanding rapidly."
+    },
+
+    2005: {
+        era: "THE VIDEO REVOLUTION",
+        title: "A NEW WAY TO SHARE",
+        description: "Online video-sharing became increasingly popular. People could now upload, discover and share videos with audiences around the world."
+    },
+
+    2010: {
+        era: "THE SOCIAL WEB",
+        title: "EVERYONE GOES SOCIAL",
+        description: "Social networking and smartphones changed how people communicated, shared photographs and discovered online content."
+    },
+
+    2015: {
+        era: "THE MOBILE INTERNET",
+        title: "THE INTERNET IN YOUR POCKET",
+        description: "Mobile apps, streaming services and online communities became central to everyday digital experiences."
+    },
+
+    2020: {
+        era: "THE CONNECTED WORLD",
+        title: "A DIGITAL-FIRST ERA",
+        description: "Video meetings, online learning, cloud services and digital communication became especially important around the world."
+    }
+
+};
+
+
+// UPDATE TIME MACHINE
+
+function updateTimeMachine() {
+
+    if (!yearSlider) return;
+
+    const year = Number(yearSlider.value);
+
+    const archive = timeArchives[year];
+
+    if (!archive) return;
+
+    selectedYear.textContent = year;
+
+    selectedEra.textContent = archive.era;
+
+    timeTitle.textContent = archive.title;
+
+    timeDescription.textContent = archive.description;
+
+    timeCoordinates.textContent = year + " / ONLINE";
+
+}
+
+
+// SLIDER EVENT
+
+if (yearSlider) {
+
+    yearSlider.addEventListener("input", updateTimeMachine);
+
+    updateTimeMachine();
+
+}
