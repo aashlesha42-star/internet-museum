@@ -1,195 +1,258 @@
-/* =====================================
-   INTERNET MUSEUM
-   INTERACTIVE SYSTEM 2.0
-===================================== */
+// ==========================================
+// VELTRIX-Ω7 | INTERNET MUSEUM
+// INTERACTIVE EXHIBITION SYSTEM
+// ==========================================
 
 
-/* MOBILE NAVIGATION */
+// EXHIBITION DATABASE
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+const exhibitionData = {
 
-menuToggle.addEventListener("click", function () {
+    "LOST WEBSITES": {
+        category: "DIGITAL ARCHIVE / WEB HISTORY",
+        year: "ERA: 1990s–2000s",
+        number: "ARCHIVE_001",
+        fact: "Early websites often used simple HTML layouts, table-based designs, bright backgrounds and animated GIFs. They show how the internet looked before modern web design."
+    },
 
-    navLinks.classList.toggle("open");
+    "FORGOTTEN TRENDS": {
+        category: "DIGITAL ARCHIVE / INTERNET CULTURE",
+        year: "ERA: 2000s–2010s",
+        number: "ARCHIVE_002",
+        fact: "Internet trends spread through forums, blogs, videos and early social networks. Many popular online trends disappeared quickly but remain part of internet culture."
+    },
 
-});
+    "VINTAGE TECHNOLOGY": {
+        category: "DIGITAL ARCHIVE / TECHNOLOGY",
+        year: "ERA: 1970s–2000s",
+        number: "ARCHIVE_003",
+        fact: "Home computers, CRT monitors, floppy disks and early mobile phones changed how people accessed and stored digital information."
+    },
 
-
-/* CLOSE MOBILE MENU AFTER CLICK */
-
-document.querySelectorAll(".nav-links a").forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navLinks.classList.remove("open");
-
-    });
-
-});
-
-
-/* ARCHIVE SEARCH */
-
-const searchInput = document.getElementById("archiveSearch");
-
-const collectionCards = document.querySelectorAll(".collection-card");
-
-const noResults = document.getElementById("noResults");
-
-searchInput.addEventListener("input", function () {
-
-    const searchValue = searchInput.value.toLowerCase().trim();
-
-    let visibleCards = 0;
-
-    collectionCards.forEach(function (card) {
-
-        const searchableText = card.dataset.search.toLowerCase();
-
-        if (searchableText.includes(searchValue)) {
-
-            card.style.display = "block";
-
-            visibleCards++;
-
-        } else {
-
-            card.style.display = "none";
-
-        }
-
-    });
-
-    if (visibleCards === 0) {
-
-        noResults.style.display = "block";
-
-    } else {
-
-        noResults.style.display = "none";
-
+    "DIGITAL MEMORIES": {
+        category: "DIGITAL ARCHIVE / COMMUNITY STORIES",
+        year: "PERSONAL DIGITAL HISTORY",
+        number: "ARCHIVE_004",
+        fact: "Personal digital memories help document how people used old websites, online games, devices and digital communities."
     }
 
-});
+};
 
 
-/* ARCHIVE PREVIEW MODAL */
+// MODAL ELEMENTS
 
 const archiveModal = document.getElementById("archiveModal");
-
-const modalTitle = document.getElementById("modalTitle");
-
-const modalDescription = document.getElementById("modalDescription");
 
 const closeModal = document.getElementById("closeModal");
 
 const modalOkay = document.getElementById("modalOkay");
 
+const modalTitle = document.getElementById("modalTitle");
 
-/* OPEN ARCHIVE */
+const modalDescription = document.getElementById("modalDescription");
 
-document.querySelectorAll(".explore-card").forEach(function (button) {
+const modalCategory = document.getElementById("modalCategory");
+
+const modalYear = document.getElementById("modalYear");
+
+const modalFact = document.getElementById("modalFact");
+
+const modalImage = document.getElementById("modalImage");
+
+
+// OPEN EXHIBITION
+
+document.querySelectorAll(".explore-card").forEach(button => {
 
     button.addEventListener("click", function () {
 
-        const title = button.dataset.title;
+        const title = this.dataset.title || "DIGITAL ARCHIVE";
 
-        const description = button.dataset.description;
+        const description = this.dataset.description || "Explore this digital exhibition.";
+
+        const exhibition = exhibitionData[title.toUpperCase()] || {};
 
         modalTitle.textContent = title;
 
         modalDescription.textContent = description;
 
-        archiveModal.classList.add("show");
+        modalCategory.textContent =
+            exhibition.category || "DIGITAL ARCHIVE / DISCOVERY";
 
-        document.body.style.overflow = "hidden";
+        modalYear.textContent =
+            exhibition.year || "ERA: UNKNOWN";
+
+        modalFact.textContent =
+            exhibition.fact || "This archive preserves a piece of digital history.";
+
+        modalImage.innerHTML = "";
+
+        const archiveNumber = document.createElement("span");
+
+        archiveNumber.textContent =
+            exhibition.number || "ARCHIVE_000";
+
+        modalImage.appendChild(archiveNumber);
+
+        archiveModal.classList.add("show");
 
     });
 
 });
 
 
-/* CLOSE MODAL FUNCTION */
+// CLOSE EXHIBITION
 
-function hideModal() {
+function closeExhibition() {
 
-    archiveModal.classList.remove("show");
+    if (archiveModal) {
+        archiveModal.classList.remove("show");
+    }
 
-    document.body.style.overflow = "";
+}
+
+if (closeModal) {
+    closeModal.addEventListener("click", closeExhibition);
+}
+
+if (modalOkay) {
+    modalOkay.addEventListener("click", closeExhibition);
+}
+
+if (archiveModal) {
+
+    archiveModal.addEventListener("click", function (event) {
+
+        if (event.target === archiveModal) {
+            closeExhibition();
+        }
+
+    });
 
 }
 
 
-/* CLOSE BUTTON */
-
-closeModal.addEventListener("click", hideModal);
-
-modalOkay.addEventListener("click", hideModal);
-
-
-/* CLOSE WHEN CLICKING OUTSIDE */
-
-archiveModal.addEventListener("click", function (event) {
-
-    if (event.target === archiveModal) {
-
-        hideModal();
-
-    }
-
-});
-
-
-/* CLOSE USING ESCAPE */
+// ESCAPE KEY
 
 document.addEventListener("keydown", function (event) {
 
     if (event.key === "Escape") {
-
-        hideModal();
-
+        closeExhibition();
     }
 
 });
 
 
-/* MEMORY BUTTON */
+// SEARCH ARCHIVES
 
-document.getElementById("memoryButton").addEventListener("click", function () {
+const searchInput =
+    document.getElementById("archiveSearch") ||
+    document.getElementById("searchInput") ||
+    document.querySelector('input[type="search"]');
 
-    modalTitle.textContent = "PRESERVE YOUR MEMORY";
+if (searchInput) {
 
-    modalDescription.textContent =
-        "Your memories deserve a place in internet history. " +
-        "The community memory submission system will be introduced " +
-        "in a future update.";
+    searchInput.addEventListener("input", function () {
 
-    archiveModal.classList.add("show");
+        const searchText = this.value.toLowerCase().trim();
 
-    document.body.style.overflow = "hidden";
+        document.querySelectorAll(".explore-card").forEach(button => {
 
-});
+            const card = button.closest(".archive-card, .collection-card") ||
+                button.parentElement;
+
+            const cardText = (
+                button.textContent + " " +
+                (button.dataset.title || "") + " " +
+                (button.dataset.description || "")
+            ).toLowerCase();
+
+            card.style.display = cardText.includes(searchText)
+                ? ""
+                : "none";
+
+        });
+
+    });
+
+}
 
 
-/* CURRENT YEAR */
+// MOBILE NAVIGATION
 
-document.getElementById("copyright").textContent =
-    "© " + new Date().getFullYear() + " INTERNET MUSEUM";
+const menuToggle =
+    document.getElementById("menuToggle") ||
+    document.querySelector(".menu-toggle");
+
+const navLinks =
+    document.getElementById("navLinks") ||
+    document.querySelector(".nav-links");
+
+if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener("click", function () {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("active");
+
+        });
+
+    });
+
+}
 
 
-/* SYSTEM INITIALIZATION */
+// DIGITAL MEMORY BUTTON
 
-console.log("--------------------------------");
+const memoryButton = document.getElementById("memoryButton");
 
-console.log("INTERNET MUSEUM");
+if (memoryButton) {
 
-console.log("VERSION 2.0");
+    memoryButton.addEventListener("click", function () {
 
-console.log("ARCHIVE SYSTEM ONLINE");
+        modalTitle.textContent = "DIGITAL MEMORIES";
 
-console.log("SEARCH SYSTEM ONLINE");
+        modalCategory.textContent =
+            "VELTRIX-Ω7 / COMMUNITY ARCHIVE";
 
-console.log("INTERACTIVE ARCHIVES ONLINE");
+        modalYear.textContent =
+            "STATUS: MEMORY COLLECTION";
 
-console.log("--------------------------------");
+        modalDescription.textContent =
+            "Some of the internet's most interesting history lives in people's memories.";
+
+        modalFact.textContent =
+            "This space will become a collection of stories about old websites, games, online communities and technology.";
+
+        modalImage.innerHTML = "<span>MEMORY_001</span>";
+
+        archiveModal.classList.add("show");
+
+    });
+
+}
+
+
+// CURRENT YEAR
+
+const yearElement = document.getElementById("currentYear");
+
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
+
+
+// SYSTEM STATUS
+
+console.log("VELTRIX-Ω7 SYSTEM ONLINE");
+
+console.log("DIGITAL EXHIBITION DATABASE LOADED");
+
+console.log("ALL ARCHIVES READY");
