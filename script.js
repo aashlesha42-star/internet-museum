@@ -1,106 +1,195 @@
-// ======================================
-// VELTRIX-Ω7 | INTERNET MUSEUM
-// MAIN INTERACTIVE SYSTEM
-// ======================================
+/* =====================================
+   INTERNET MUSEUM
+   INTERACTIVE SYSTEM 2.0
+===================================== */
 
 
-// PAGE LOADER
+/* MOBILE NAVIGATION */
 
-window.addEventListener("load", function () {
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-    setTimeout(function () {
+menuToggle.addEventListener("click", function () {
 
-        const loader = document.getElementById("loader");
-
-        if (loader) {
-            loader.classList.add("hide");
-        }
-
-    }, 1500);
+    navLinks.classList.toggle("open");
 
 });
 
 
-// ENTER MUSEUM
+/* CLOSE MOBILE MENU AFTER CLICK */
 
-function enterMuseum() {
-
-    const archives = document.getElementById("archives");
-
-    if (archives) {
-        archives.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
-}
-
-
-// SCROLL TO ARCHIVES
-
-function scrollToArchives() {
-
-    const archives = document.getElementById("archives");
-
-    if (archives) {
-        archives.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
-}
-
-
-// NAVIGATION ACTIVE EFFECT
-
-const navigationLinks = document.querySelectorAll(".navbar nav a");
-
-navigationLinks.forEach(function (link) {
+document.querySelectorAll(".nav-links a").forEach(function (link) {
 
     link.addEventListener("click", function () {
 
-        navigationLinks.forEach(function (item) {
-            item.classList.remove("active");
-        });
-
-        link.classList.add("active");
+        navLinks.classList.remove("open");
 
     });
 
 });
 
 
-// ARCHIVE CARD INTERACTION
+/* ARCHIVE SEARCH */
 
-const archiveCards = document.querySelectorAll(".archive-card");
+const searchInput = document.getElementById("archiveSearch");
 
-archiveCards.forEach(function (card) {
+const collectionCards = document.querySelectorAll(".collection-card");
 
-    card.addEventListener("mouseenter", function () {
+const noResults = document.getElementById("noResults");
 
-        card.style.transition = "0.4s";
+searchInput.addEventListener("input", function () {
+
+    const searchValue = searchInput.value.toLowerCase().trim();
+
+    let visibleCards = 0;
+
+    collectionCards.forEach(function (card) {
+
+        const searchableText = card.dataset.search.toLowerCase();
+
+        if (searchableText.includes(searchValue)) {
+
+            card.style.display = "block";
+
+            visibleCards++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    if (visibleCards === 0) {
+
+        noResults.style.display = "block";
+
+    } else {
+
+        noResults.style.display = "none";
+
+    }
+
+});
+
+
+/* ARCHIVE PREVIEW MODAL */
+
+const archiveModal = document.getElementById("archiveModal");
+
+const modalTitle = document.getElementById("modalTitle");
+
+const modalDescription = document.getElementById("modalDescription");
+
+const closeModal = document.getElementById("closeModal");
+
+const modalOkay = document.getElementById("modalOkay");
+
+
+/* OPEN ARCHIVE */
+
+document.querySelectorAll(".explore-card").forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        const title = button.dataset.title;
+
+        const description = button.dataset.description;
+
+        modalTitle.textContent = title;
+
+        modalDescription.textContent = description;
+
+        archiveModal.classList.add("show");
+
+        document.body.style.overflow = "hidden";
 
     });
 
 });
 
 
-// DIGITAL SYSTEM STATUS
+/* CLOSE MODAL FUNCTION */
 
-console.log("================================");
-console.log("VELTRIX-Ω7");
-console.log("DIGITAL ARCHIVE SYSTEM ONLINE");
-console.log("================================");
+function hideModal() {
 
+    archiveModal.classList.remove("show");
 
-// CURRENT YEAR
-
-const footerYear = document.querySelector("footer p:last-child");
-
-if (footerYear) {
-
-    footerYear.textContent =
-        "© " + new Date().getFullYear() +
-        " VELTRIX DIGITAL ARCHIVES";
+    document.body.style.overflow = "";
 
 }
+
+
+/* CLOSE BUTTON */
+
+closeModal.addEventListener("click", hideModal);
+
+modalOkay.addEventListener("click", hideModal);
+
+
+/* CLOSE WHEN CLICKING OUTSIDE */
+
+archiveModal.addEventListener("click", function (event) {
+
+    if (event.target === archiveModal) {
+
+        hideModal();
+
+    }
+
+});
+
+
+/* CLOSE USING ESCAPE */
+
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+        hideModal();
+
+    }
+
+});
+
+
+/* MEMORY BUTTON */
+
+document.getElementById("memoryButton").addEventListener("click", function () {
+
+    modalTitle.textContent = "PRESERVE YOUR MEMORY";
+
+    modalDescription.textContent =
+        "Your memories deserve a place in internet history. " +
+        "The community memory submission system will be introduced " +
+        "in a future update.";
+
+    archiveModal.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+});
+
+
+/* CURRENT YEAR */
+
+document.getElementById("copyright").textContent =
+    "© " + new Date().getFullYear() + " INTERNET MUSEUM";
+
+
+/* SYSTEM INITIALIZATION */
+
+console.log("--------------------------------");
+
+console.log("INTERNET MUSEUM");
+
+console.log("VERSION 2.0");
+
+console.log("ARCHIVE SYSTEM ONLINE");
+
+console.log("SEARCH SYSTEM ONLINE");
+
+console.log("INTERACTIVE ARCHIVES ONLINE");
+
+console.log("--------------------------------");
