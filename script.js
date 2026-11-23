@@ -1,4 +1,3 @@
-```javascript
 // ======================================
 // VELTRIX-Ω7 | INTERNET MUSEUM
 // MAIN INTERACTIVE SYSTEM
@@ -105,4 +104,3 @@ if (footerYear) {
         " VELTRIX DIGITAL ARCHIVES";
 
 }
-```
