@@ -5,51 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VELTRIX-Ω7 | The Internet Museum</title>
+    <meta name="description" content="Explore the forgotten history of the internet through an interactive digital museum.">
 
-    <link rel="stylesheet" href="style.css">
+    <title>Internet Museum — Explore the Lost Internet</title>
+
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <div class="loader" id="loader">
-        <h1>VELTRIX-Ω7</h1>
-        <p>INITIALIZING DIGITAL ARCHIVES...</p>
-    </div>
+    <!-- BACKGROUND EFFECT -->
+    <div class="background-grid"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
 
+    <!-- NAVIGATION -->
     <header class="navbar">
 
-        <div class="logo">
-            VELTRIX<span>Ω7</span>
-        </div>
+        <a href="#home" class="brand">
+            <span class="brand-icon">Ω</span>
+            <span>INTERNET<span class="brand-highlight">MUSEUM</span></span>
+        </a>
 
-        <nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            ☰
+        </button>
+
+        <nav class="nav-links" id="navLinks">
             <a href="#home">Home</a>
-            <a href="#archives">Archives</a>
+            <a href="#collections">Collections</a>
             <a href="#timeline">Timeline</a>
+            <a href="#memories">Memories</a>
             <a href="#about">About</a>
         </nav>
 
-        <button class="access-btn" onclick="enterMuseum()">
-            ENTER ARCHIVE ↗
-        </button>
+        <a href="#collections" class="nav-button">
+            EXPLORE ARCHIVE ↗
+        </a>
 
     </header>
 
 
+    <!-- HERO -->
     <main>
 
         <section class="hero" id="home">
 
             <div class="hero-content">
 
-                <div class="status">
-                    <span class="status-dot"></span>
+                <div class="system-status">
+                    <span class="status-indicator"></span>
                     DIGITAL ARCHIVE SYSTEM ONLINE
                 </div>
 
-                <p class="subtitle">
-                    A JOURNEY THROUGH THE LOST INTERNET
+                <p class="eyebrow">
+                    A MUSEUM BEYOND TIME
                 </p>
 
                 <h1>
@@ -57,127 +67,386 @@
                     NEVER <span>FORGETS.</span>
                 </h1>
 
-                <p class="description">
+                <p class="hero-description">
                     Explore forgotten websites, lost digital cultures,
                     vintage technology and memories from the internet's past.
+                    Every digital era has a story worth remembering.
                 </p>
 
-                <div class="hero-buttons">
+                <div class="hero-actions">
 
-                    <button class="primary-btn" onclick="enterMuseum()">
-                        EXPLORE THE MUSEUM →
-                    </button>
+                    <a href="#collections" class="button-primary">
+                        ENTER THE MUSEUM →
+                    </a>
 
-                    <button class="secondary-btn" onclick="scrollToArchives()">
-                        DISCOVER MORE
-                    </button>
+                    <a href="#timeline" class="button-secondary">
+                        EXPLORE HISTORY
+                    </a>
 
                 </div>
 
-                <div class="hero-footer">
-                    <span>ARCHIVE NO. 001</span>
-                    <span>EST. BEYOND TIME</span>
-                    <span>VERSION 1.0</span>
-                </div>
+                <div class="hero-stats">
 
-            </div>
+                    <div>
+                        <h3>04</h3>
+                        <p>COLLECTIONS</p>
+                    </div>
 
-            <div class="hero-visual">
+                    <div>
+                        <h3>∞</h3>
+                        <p>MEMORIES</p>
+                    </div>
 
-                <div class="orbit orbit-one"></div>
-                <div class="orbit orbit-two"></div>
-
-                <div class="core">
-
-                    <div class="core-inner">
-                        Ω
+                    <div>
+                        <h3>001</h3>
+                        <p>ARCHIVE VERSION</p>
                     </div>
 
                 </div>
 
-                <div class="floating-card card-one">
-                    LOST WEBSITES
+            </div>
+
+
+            <!-- DIGITAL ORB -->
+            <div class="hero-visual">
+
+                <div class="orb-ring ring-one"></div>
+                <div class="orb-ring ring-two"></div>
+                <div class="orb-ring ring-three"></div>
+
+                <div class="digital-orb">
+                    <span>Ω</span>
                 </div>
 
-                <div class="floating-card card-two">
-                    DIGITAL MEMORIES
+                <div class="floating-label label-one">
+                    <span>●</span> LOST DATA
                 </div>
 
-                <div class="floating-card card-three">
-                    ARCHIVE_404
+                <div class="floating-label label-two">
+                    DIGITAL HISTORY
+                </div>
+
+                <div class="floating-label label-three">
+                    ARCHIVE_001
                 </div>
 
             </div>
 
-            <div class="scroll-indicator">
-                SCROLL TO EXPLORE ↓
+            <div class="scroll-text">
+                SCROLL TO DISCOVER ↓
             </div>
 
         </section>
 
 
-        <section class="archives" id="archives">
+        <!-- COLLECTIONS -->
+        <section class="collections section" id="collections">
 
-            <div class="section-heading">
-                <p>01 / THE COLLECTION</p>
+            <div class="section-top">
 
-                <h2>
-                    EXPLORE THE <span>ARCHIVES.</span>
-                </h2>
+                <div>
+                    <p class="section-label">01 / DIGITAL COLLECTIONS</p>
 
-                <p class="section-description">
-                    Every forgotten corner of the internet has a story.
-                </p>
+                    <h2>
+                        EXPLORE THE <span>ARCHIVES.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Four gateways into the forgotten digital world.
+                    </p>
+                </div>
+
+                <div class="collection-count">
+                    COLLECTIONS / 004
+                </div>
+
             </div>
 
-            <div class="archive-grid">
 
-                <div class="archive-card">
-                    <span>01</span>
+            <!-- SEARCH -->
+            <div class="search-container">
+
+                <span>⌕</span>
+
+                <input
+                    type="search"
+                    id="archiveSearch"
+                    placeholder="Search the digital archives..."
+                    autocomplete="off"
+                >
+
+                <span class="search-shortcut">SEARCH</span>
+
+            </div>
+
+
+            <!-- COLLECTION CARDS -->
+            <div class="collection-grid">
+
+                <article class="collection-card"
+                    data-search="lost websites old websites internet history">
+
+                    <div class="card-top">
+                        <span>ARCHIVE / 001</span>
+                        <span class="card-symbol">◈</span>
+                    </div>
+
+                    <div class="card-art website-art">
+                        <div class="mini-browser">
+                            <div class="browser-dots">● ● ●</div>
+                            <div class="browser-line"></div>
+                            <div class="browser-content">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3>LOST WEBSITES</h3>
-                    <p>Discover websites that disappeared into internet history.</p>
-                    <a href="#">EXPLORE ↗</a>
-                </div>
 
-                <div class="archive-card">
-                    <span>02</span>
+                    <p>
+                        Discover forgotten websites and explore
+                        how the early internet looked.
+                    </p>
+
+                    <button class="explore-card"
+                        data-title="Lost Websites"
+                        data-description="Explore the evolution of website design, forgotten web communities, early internet experiments and historical website snapshots.">
+                        OPEN ARCHIVE ↗
+                    </button>
+
+                </article>
+
+
+                <article class="collection-card"
+                    data-search="forgotten trends viral memes internet culture">
+
+                    <div class="card-top">
+                        <span>ARCHIVE / 002</span>
+                        <span class="card-symbol">✳</span>
+                    </div>
+
+                    <div class="card-art trend-art">
+                        <div class="trend-shape shape-one"></div>
+                        <div class="trend-shape shape-two"></div>
+                        <div class="trend-shape shape-three"></div>
+                        <span class="trend-word">TREND</span>
+                    </div>
+
                     <h3>FORGOTTEN TRENDS</h3>
-                    <p>Rediscover the digital trends that once ruled the internet.</p>
-                    <a href="#">EXPLORE ↗</a>
-                </div>
 
-                <div class="archive-card">
-                    <span>03</span>
+                    <p>
+                        Rediscover viral challenges, internet
+                        aesthetics and digital culture.
+                    </p>
+
+                    <button class="explore-card"
+                        data-title="Forgotten Trends"
+                        data-description="Travel through the internet trends, memes, aesthetics and online challenges that defined different generations of digital culture.">
+                        OPEN ARCHIVE ↗
+                    </button>
+
+                </article>
+
+
+                <article class="collection-card"
+                    data-search="vintage technology computers devices">
+
+                    <div class="card-top">
+                        <span>ARCHIVE / 003</span>
+                        <span class="card-symbol">⌘</span>
+                    </div>
+
+                    <div class="card-art tech-art">
+                        <div class="retro-computer">
+                            <div class="computer-screen">
+                                <span>HELLO</span>
+                            </div>
+                            <div class="computer-base"></div>
+                        </div>
+                    </div>
+
                     <h3>VINTAGE TECHNOLOGY</h3>
-                    <p>Travel through the evolution of digital technology.</p>
-                    <a href="#">EXPLORE ↗</a>
-                </div>
 
-                <div class="archive-card">
-                    <span>04</span>
+                    <p>
+                        Discover the devices and innovations
+                        that shaped our digital world.
+                    </p>
+
+                    <button class="explore-card"
+                        data-title="Vintage Technology"
+                        data-description="Explore historical computers, early mobile phones, gaming consoles, digital devices and the technology that changed everyday life.">
+                        OPEN ARCHIVE ↗
+                    </button>
+
+                </article>
+
+
+                <article class="collection-card"
+                    data-search="digital memories personal stories nostalgia">
+
+                    <div class="card-top">
+                        <span>ARCHIVE / 004</span>
+                        <span class="card-symbol">✧</span>
+                    </div>
+
+                    <div class="card-art memory-art">
+                        <div class="memory-window">
+                            <span>MEMORY_001</span>
+                            <div class="memory-lines"></div>
+                            <div class="memory-lines"></div>
+                            <div class="memory-lines"></div>
+                        </div>
+                    </div>
+
                     <h3>DIGITAL MEMORIES</h3>
-                    <p>Explore personal memories from different internet eras.</p>
-                    <a href="#">EXPLORE ↗</a>
-                </div>
+
+                    <p>
+                        Explore the personal memories and stories
+                        people share about the internet.
+                    </p>
+
+                    <button class="explore-card"
+                        data-title="Digital Memories"
+                        data-description="Discover personal stories about first websites, early internet experiences, favourite digital devices and memories shared by visitors.">
+                        OPEN ARCHIVE ↗
+                    </button>
+
+                </article>
 
             </div>
+
+            <p class="no-results" id="noResults">
+                NO MATCHING ARCHIVES FOUND.
+            </p>
 
         </section>
 
 
-        <section class="about" id="about">
+        <!-- TIMELINE -->
+        <section class="timeline-section section" id="timeline">
 
-            <p>02 / OUR PURPOSE</p>
+            <p class="section-label">02 / INTERNET HISTORY</p>
 
             <h2>
-                SOME THINGS<br>
-                DESERVE TO BE<br>
-                <span>REMEMBERED.</span>
+                A JOURNEY THROUGH <span>TIME.</span>
+            </h2>
+
+            <p class="section-description">
+                Explore some important milestones in internet history.
+            </p>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <span class="timeline-year">1969</span>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>THE BEGINNING</h3>
+                        <p>
+                            ARPANET connects its first computers,
+                            helping establish the foundations of networking.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">1983</span>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>A NEW PROTOCOL</h3>
+                        <p>
+                            ARPANET adopts TCP/IP, an important
+                            milestone in the development of the internet.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">1991</span>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>THE WORLD WIDE WEB</h3>
+                        <p>
+                            The World Wide Web becomes publicly
+                            accessible and opens new possibilities.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">2000s</span>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>THE SOCIAL WEB</h3>
+                        <p>
+                            Social networking, blogs and video-sharing
+                            platforms transform online communication.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">TODAY</span>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>THE DIGITAL AGE</h3>
+                        <p>
+                            Artificial intelligence, cloud computing
+                            and connected devices continue to reshape
+                            the internet.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEMORIES -->
+        <section class="memory-section section" id="memories">
+
+            <div class="memory-box">
+
+                <p class="section-label">03 / PRESERVE THE PAST</p>
+
+                <h2>
+                    EVERYONE HAS<br>
+                    AN INTERNET <span>STORY.</span>
+                </h2>
+
+                <p>
+                    Remember your first website? Your favourite
+                    old game? A device you used years ago?
+
+                    Every memory can become part of digital history.
+                </p>
+
+                <button class="button-primary" id="memoryButton">
+                    SHARE YOUR MEMORY ↗
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section class="about-section section" id="about">
+
+            <p class="section-label">04 / ABOUT THE MUSEUM</p>
+
+            <h2>
+                THE PAST IS NOT<br>
+                <span>JUST HISTORY.</span>
             </h2>
 
             <p>
-                VELTRIX-Ω7 exists to preserve the digital past
-                and make internet history discoverable for everyone.
+                The Internet Museum is a digital preservation project
+                dedicated to forgotten websites, internet culture,
+                historical technology and personal digital memories.
             </p>
 
         </section>
@@ -185,14 +454,47 @@
     </main>
 
 
+    <!-- ARCHIVE MODAL -->
+    <div class="modal-overlay" id="archiveModal">
+
+        <div class="modal-box">
+
+            <button class="modal-close" id="closeModal"
+                aria-label="Close">×</button>
+
+            <p class="section-label">DIGITAL ARCHIVE / DISCOVERY</p>
+
+            <h2 id="modalTitle">ARCHIVE</h2>
+
+            <p id="modalDescription"></p>
+
+            <button class="button-primary" id="modalOkay">
+                UNDERSTOOD
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
     <footer>
-        <h2>VELTRIX-Ω7</h2>
+
+        <a href="#home" class="brand footer-brand">
+            <span class="brand-icon">Ω</span>
+            INTERNET<span class="brand-highlight">MUSEUM</span>
+        </a>
+
         <p>THE INTERNET NEVER FORGETS.</p>
-        <p>© 2026 VELTRIX DIGITAL ARCHIVES</p>
+
+        <p id="copyright">
+            © 2026 INTERNET MUSEUM
+        </p>
+
     </footer>
 
 
-    <script src="script.js"></script>
+    <script src="./script.js" defer></script>
 
 </body>
 </html>
